@@ -1,0 +1,13 @@
+/*
+ * This file tells the build process where to inject Tailwind's utility classes.
+ * Without these three lines, the framework is not applied, resulting in a plain HTML look.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: Set a global font, although Tailwind usually handles this */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000000; /* Ensure the background is black as intended */
+}
