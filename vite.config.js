@@ -10,6 +10,7 @@ const base = process.env.NODE_ENV === 'production' ? '/prajwal-portfolio/' : '/'
 
 export default defineConfig({
   plugins: [react()],
+  base: "/prajwal-portfolio/",
   // Sets the base public path when served in production
   base: base,
   
