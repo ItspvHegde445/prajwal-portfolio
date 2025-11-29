@@ -15,6 +15,9 @@ permissions:
 
 jobs:
   build-and-deploy:
+  environment:
+      name: github-pages # ADD THIS LINE
+      url: ${{ steps.deployment.outputs.page_url }} # ADD THIS LINE
     runs-on: ubuntu-latest
 
     steps:
