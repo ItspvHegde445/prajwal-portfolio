@@ -8,7 +8,6 @@ const Portfolio = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [activeCard, setActiveCard] = useState(null); 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [targetSection, setTargetSection] = useState(null); // State to handle scroll targeting
 
   // Contact Information
   const emailAddress = "prajju569@gmail.com";
@@ -171,95 +170,80 @@ const Portfolio = () => {
     </div>
   );
 
-  const AboutPage = () => {
-    // Scroll to specific section if targetSection is set
-    useEffect(() => {
-        if (targetSection === 'influencers') {
-            const element = document.getElementById('influencer-network');
-            if (element) {
-                setTimeout(() => {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-                setTargetSection(null);
-            }
-        }
-    }, []);
-
-    return (
-      <div className="min-h-screen bg-[#e0e0e0] text-black p-4 md:p-12 animate-in fade-in zoom-in-95 duration-500 pb-20">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 gap-8 md:gap-12 pt-12 md:pt-0">
-          
-          {/* --- Section 1: Introduction & Status --- */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-            <div className="md:col-span-8">
-              <h2 className="text-5xl md:text-8xl font-black uppercase mb-6 md:mb-8 tracking-tighter leading-[0.85] md:leading-[0.8]">
-                Architect of<br/>Influence.
-              </h2>
-              <p className="text-lg md:text-2xl font-medium leading-relaxed mb-6 md:mb-8">
-                I'm Prajwal Hegde. I don't just "do marketing"—I engineer attention.
-              </p>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8 max-w-2xl">
-                From the high-pressure environment of VRL Travels boardrooms to the creative chaos of backstage comedy tours with Nishant Tanwar and Samay Raina, I thrive where data meets culture.
-              </p>
-              <div className="bg-black text-white p-6 md:p-8 inline-block rotate-1 shadow-[6px_6px_0px_0px_#ccff00] md:shadow-[10px_10px_0px_0px_#ccff00]">
-                <span className="font-mono text-[#ccff00] block mb-2 text-xs md:text-sm">CURRENT STATUS</span>
-                <div className="text-xl md:text-2xl font-bold uppercase">Available for Hire</div>
-              </div>
-            </div>
-            <div className="md:col-span-4 space-y-4">
-              <div className="border-t-4 border-black pt-4">
-                <h3 className="font-black uppercase text-xl mb-4">Core Stack</h3>
-                <ul className="space-y-3 font-mono text-xs md:text-sm">
-                  <li className="flex justify-between border-b border-gray-400 pb-1"><span>Brand Strategy</span><span>100%</span></li>
-                  <li className="flex justify-between border-b border-gray-400 pb-1"><span>Influencer Mgmt</span><span>100%</span></li>
-                  <li className="flex justify-between border-b border-gray-400 pb-1"><span>Performance Ads</span><span>95%</span></li>
-                  <li className="flex justify-between border-b border-gray-400 pb-1"><span>Event Ops</span><span>90%</span></li>
-                </ul>
-              </div>
+  const AboutPage = () => (
+    <div className="min-h-screen bg-[#e0e0e0] text-black p-4 md:p-12 animate-in fade-in zoom-in-95 duration-500 pb-20">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 gap-8 md:gap-12 pt-12 md:pt-0">
+        
+        {/* --- Section 1: Introduction & Status --- */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+          <div className="md:col-span-8">
+            <h2 className="text-5xl md:text-8xl font-black uppercase mb-6 md:mb-8 tracking-tighter leading-[0.85] md:leading-[0.8]">
+              Architect of<br/>Influence.
+            </h2>
+            <p className="text-lg md:text-2xl font-medium leading-relaxed mb-6 md:mb-8">
+              I'm Prajwal Hegde. I don't just "do marketing"—I engineer attention.
+            </p>
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8 max-w-2xl">
+              From the high-pressure environment of VRL Travels boardrooms to the creative chaos of backstage comedy tours with Nishant Tanwar and Samay Raina, I thrive where data meets culture.
+            </p>
+            <div className="bg-black text-white p-6 md:p-8 inline-block rotate-1 shadow-[6px_6px_0px_0px_#ccff00] md:shadow-[10px_10px_0px_0px_#ccff00]">
+              <span className="font-mono text-[#ccff00] block mb-2 text-xs md:text-sm">CURRENT STATUS</span>
+              <div className="text-xl md:text-2xl font-bold uppercase">Available for Hire</div>
             </div>
           </div>
-
-          {/* --- Section 2: Influencer Network Grid --- */}
-          <div id="influencer-network" className="mt-8 md:mt-16 pt-8 md:pt-12 border-t-4 border-black scroll-mt-20">
-            <h3 className="text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 tracking-tighter text-black leading-none">
-              Influencer<br/>Network
-            </h3>
-            <p className="text-base md:text-lg text-gray-700 max-w-2xl mb-8 md:mb-12">
-              Leveraging partnerships with some of the biggest names in the Indian comedy and entertainment circuits.
-            </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-              {influencers.map((person, index) => (
-                <a 
-                  key={index} 
-                  href={person.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative flex flex-col items-center group cursor-pointer"
-                >
-                  <div className="relative w-full aspect-square bg-gray-200 p-1 md:p-1.5 border-2 md:border-4 border-black group-hover:border-[#ccff00] transition-colors duration-300 shadow-[4px_4px_0px_0px_#000] md:shadow-[8px_8px_0px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
-                    <img 
-                      src={person.url} 
-                      alt={person.name} 
-                      className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                      onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/400x400/000000/ccff00?text=P+H" }}
-                    />
-                    {/* Floating Label / Name Tag - Simplified for mobile */}
-                    <div className="absolute -bottom-2 md:-bottom-3 left-1/2 transform -translate-x-1/2 bg-black text-[#ccff00] px-2 md:px-4 py-0.5 md:py-1 font-bold uppercase text-[10px] md:text-xs whitespace-nowrap border border-[#ccff00] rotate-[-2deg] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                      <div className="flex items-center gap-1">
-                        <Instagram size={8} />
-                        <span>{person.name.split(' ')[0]}</span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              ))}
+          <div className="md:col-span-4 space-y-4">
+            <div className="border-t-4 border-black pt-4">
+              <h3 className="font-black uppercase text-xl mb-4">Core Stack</h3>
+              <ul className="space-y-3 font-mono text-xs md:text-sm">
+                <li className="flex justify-between border-b border-gray-400 pb-1"><span>Brand Strategy</span><span>100%</span></li>
+                <li className="flex justify-between border-b border-gray-400 pb-1"><span>Influencer Mgmt</span><span>100%</span></li>
+                <li className="flex justify-between border-b border-gray-400 pb-1"><span>Performance Ads</span><span>95%</span></li>
+                <li className="flex justify-between border-b border-gray-400 pb-1"><span>Event Ops</span><span>90%</span></li>
+              </ul>
             </div>
           </div>
         </div>
+
+        {/* --- Section 2: Influencer Network Grid --- */}
+        <div className="mt-8 md:mt-16 pt-8 md:pt-12 border-t-4 border-black">
+          <h3 className="text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 tracking-tighter text-black leading-none">
+            Influencer<br/>Network
+          </h3>
+          <p className="text-base md:text-lg text-gray-700 max-w-2xl mb-8 md:mb-12">
+            Leveraging partnerships with some of the biggest names in the Indian comedy and entertainment circuits.
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+            {influencers.map((person, index) => (
+              <a 
+                key={index} 
+                href={person.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative flex flex-col items-center group cursor-pointer"
+              >
+                <div className="relative w-full aspect-square bg-gray-200 p-1 md:p-1.5 border-2 md:border-4 border-black group-hover:border-[#ccff00] transition-colors duration-300 shadow-[4px_4px_0px_0px_#000] md:shadow-[8px_8px_0px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                  <img 
+                    src={person.url} 
+                    alt={person.name} 
+                    className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                    onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/400x400/000000/ccff00?text=P+H" }}
+                  />
+                  {/* Floating Label / Name Tag - Simplified for mobile */}
+                  <div className="absolute -bottom-2 md:-bottom-3 left-1/2 transform -translate-x-1/2 bg-black text-[#ccff00] px-2 md:px-4 py-0.5 md:py-1 font-bold uppercase text-[10px] md:text-xs whitespace-nowrap border border-[#ccff00] rotate-[-2deg] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-1">
+                      <Instagram size={8} />
+                      <span>{person.name.split(' ')[0]}</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-    );
-  };
+    </div>
+  );
 
   const ContactPage = () => (
     <div className="min-h-screen bg-[#ccff00] text-black flex flex-col items-center justify-center p-4 md:p-6 animate-in fade-in duration-500">
@@ -408,10 +392,7 @@ const Portfolio = () => {
                { 
                  icon: Users, 
                  label: "Influencer Mgmt",
-                 action: () => {
-                    setTargetSection('influencers');
-                    setCurrentPage('about');
-                 }
+                 action: () => setCurrentPage('about')
                },
                { 
                  icon: TrendingUp, 
